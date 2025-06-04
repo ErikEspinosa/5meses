@@ -1,0 +1,260 @@
+/* Definición de variables CSS para la paleta de colores */
+:root {
+    --color-dark-gray: #34495e; /* Gris oscuro */
+    --color-turqoise: #1abc9c;  /* Turquesa vibrante */
+    --color-pink: #e74c8c;      /* Rosa intenso */
+    --color-light-gray: #ecf0f1; /* Gris muy claro */
+    --color-white: #ffffff;     /* Blanco puro */
+}
+
+/* Estilos globales para el cuerpo de la página */
+body {
+    font-family: 'Poppins', sans-serif; /* Aplica la tipografía moderna */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #3F5EFB;
+    background: radial-gradient(circle,rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+    color: var(--color-dark-gray); /* Color de texto principal */
+    overflow-x: hidden; /* Evita el scroll horizontal no deseado */
+}
+
+/* Estilos para el encabezado de la página */
+header {
+    background-color: var(--color-dark-gray); /* Fondo gris oscuro */
+    color: var(--color-white); /* Texto blanco */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em; /* Tamaño de fuente del título */
+    font-weight: 700; /* Peso de fuente más fuerte */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+}
+
+/* .container {
+    width: 100%;
+    max-width: 1200px;
+} */
+
+.text-content {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-sizing: border-box;;
+}
+
+/* Contenedor del carrusel */
+.carousel-container {
+    position: relative;
+    width: 100vw; /* Ocupa todo el ancho del viewport */
+    max-width: 1200px;
+    height: 70vh; /* Altura del carrusel, ajusta según tus imágenes */
+    overflow: hidden; /* Oculta las partes de las imágenes que están fuera del contenedor */
+    margin: 0 auto;
+    background-color: var(--color-dark-gray); /* Fondo oscuro para el carrusel */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+}
+
+/* El slide que contiene las imágenes */
+.carousel-slide {
+    display: flex; /* Permite que las imágenes se coloquen una al lado de la otra */
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out; /* Transición suave para el movimiento */
+    /* Añadido para el swipe: */
+    touch-action: pan-y; /* Permite el scroll vertical pero no horizontal en el elemento */
+}
+
+/* Estilos para cada imagen dentro del carrusel */
+.carousel-slide img {
+    min-width: 100%; /* Cada imagen ocupa el 100% del ancho del slide */
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para cubrir el área sin distorsionarse */
+    display: block;
+    cursor: pointer; /* Indica que la imagen es clicable */
+    border-radius: 8px; /* Bordes ligeramente redondeados para las imágenes */
+}
+
+/* Botones de navegación del carrusel principal */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente oscuro */
+    color: var(--color-white); /* Texto blanco */
+    border: none;
+    padding: 12px 18px;
+    font-size: 2.2em;
+    cursor: pointer;
+    z-index: 10; /* Asegura que estén por encima de las imágenes */
+    border-radius: 50%; /* Botones circulares */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para los botones */
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* Más oscuro al pasar el ratón */
+    transform: translateY(-50%) scale(1.05); /* Ligeramente más grande al pasar el ratón */
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* Overlay de pantalla completa */
+.fullscreen-overlay {
+    position: fixed; /* Fijo en el viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95); /* Fondo muy oscuro y casi opaco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    visibility: hidden; /* Oculto por defecto */
+    opacity: 0;         /* Oculto por defecto */
+    transition: opacity 0.4s ease, visibility 0.4s ease; /* Transición suave al aparecer/desaparecer */
+}
+
+/* Clase para activar el overlay */
+.fullscreen-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Imagen dentro del overlay */
+.fullscreen-img {
+    max-width: 95vw; /* Máximo 95% del ancho del viewport */
+    max-height: 95vh; /* Máximo 95% de la altura del viewport */
+    object-fit: contain; /* Ajusta la imagen completa dentro del contenedor */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7); /* Sombra para la imagen */
+}
+
+/* Botón para cerrar el overlay */
+.close-btn {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: var(--color-pink); /* Color rosa */
+    font-size: 3.5em;
+    cursor: pointer;
+    z-index: 1001; /* Por encima de la imagen y otros botones */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Sombra para el texto */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-btn:hover {
+    color: var(--color-white); /* Blanco al pasar el ratón */
+    transform: rotate(90deg); /* Gira al pasar el ratón */
+}
+
+/* Botones de navegación dentro del overlay */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--color-turqoise); /* Color turquesa */
+    color: var(--color-white); /* Texto blanco */
+    border: none;
+    padding: 18px 25px;
+    font-size: 3em;
+    cursor: pointer;
+    z-index: 1001;
+    border-radius: 50%; /* Botones circulares */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Sombra para los botones */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--color-dark-gray); /* Gris oscuro al pasar el ratón */
+    transform: translateY(-50%) scale(1.1); /* Ligeramente más grande al pasar el ratón */
+}
+
+.prev-nav-btn {
+    left: 30px;
+}
+
+.next-nav-btn {
+    right: 30px;
+}
+
+/* Media Queries para Responsividad */
+
+/* Estilos para pantallas medianas (tablets) */
+@media (max-width: 820px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    .carousel-container {
+        height: 60vh;
+    }
+
+    .carousel-btn {
+        padding: 8px 12px;
+        font-size: 1.8em;
+    }
+
+    .close-btn {
+        font-size: 3em;
+        top: 15px;
+        right: 20px;
+    }
+
+    .nav-btn {
+        padding: 12px 18px;
+        font-size: 2.5em;
+        left: 15px;
+        right: 15px;
+    }
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+        padding: 15px;
+    }
+
+    .carousel-container {
+        height: 50vh;
+    }
+
+    .carousel-btn {
+        font-size: 1.5em;
+        padding: 5px 10px;
+        left: 5px;
+        right: 5px;
+    }
+
+    .close-btn {
+        font-size: 2.5em;
+        top: 10px;
+        right: 15px;
+    }
+
+    .nav-btn {
+        font-size: 2em;
+        padding: 10px 15px;
+        left: 10px;
+        right: 10px;
+    }
+}
